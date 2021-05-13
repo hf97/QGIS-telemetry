@@ -1,0 +1,2 @@
+# QGIS-telemetry
+QGIS-telemetry
