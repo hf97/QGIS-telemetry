@@ -1,0 +1,68 @@
+{
+  "actions": [
+    {
+      "sessionId": "20120423T182543511Z1234512345123451234512345",
+      "type": "start",
+      "datetime": "2012-04-23T18:25:43.511Z",
+      "interface": {
+        "os": "windows 10",
+        "language": "pt-PT",
+        "locale": "pt-PT",
+        "uiTheme": "Night Mapping",
+        "version": "3.16.3-Hannover"
+      },
+      "plugins": {
+        "QuickOSM": {
+          "version": "1.1"
+        }
+      }
+    },
+    {
+      "sessionId": "20120423T182543511Z1234512345123451234512345",
+      "type": "provider",
+      "datetime": "2012-04-23T18:25:43.511Z",
+      "provider": "shapefile"
+    },
+    {
+      "sessionId": "20120423T182543511Z1234512345123451234512345",
+      "type": "checkUpdate",
+      "datetime": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "sessionId": "20120423T182543511Z5555555555555555555555555",
+      "type": "start",
+      "datetime": "2012-04-23T18:25:43.511Z",
+      "interface": {
+        "os": "windows 10",
+        "language": "pt-PT",
+        "locale": "pt-PT",
+        "uiTheme": "Night Mapping",
+        "version": "3.16.3-Hannover"
+      },
+      "plugins": {
+        "QuickOSM": {
+          "version": "1.1"
+        }
+      }
+    },
+    {
+      "sessionId": "20120423T182543511Z1234512345123451234512345",
+      "type": "newsFeed",
+      "datetime": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "sessionId": "20120423T182543511Z5555555555555555555555555",
+      "type": "installPlugin",
+      "datetime": "2012-04-23T18:25:43.511Z",
+      "plugin": {
+        "nome": "QuickOSM",
+        "version": "1.1"
+      }
+    },
+    {
+      "sessionId": "20120423T182543511Z1234512345123451234512345",
+      "type": "close",
+      "datetime": "2012-04-23T18:25:43.511Z"
+    }
+  ]
+}
