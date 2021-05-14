@@ -18,7 +18,15 @@ import requests
 
 url = 'http://localhost:8000/jsonfile'
 myobj = 'C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json'
-headers = {"KEY":"telemetry"}
+f = open(myobj)
+text = f.read()
+print(text)
 
+x = requests.post(url, files = dict(telemetry = text))
 
-x = requests.post(url, headers=headers, data = myobj)
+# myobjtelemetry = 'C:/Users/hugof/Dropbox/Agora/Projeto/telemetry.json'
+# f2 = open(myobjtelemetry)
+# text2 = f2.read()
+# print(text2)
+
+# x = requests.post(url, files = dict(telemetry = text2))

@@ -10,7 +10,6 @@ def index(request):
 @csrf_exempt
 def jsonfile(request):
     if request.method == "POST":
-        print(request.POST)
         for filename in request.FILES:
             uploaded_file = request.FILES[filename]
             print(uploaded_file.__dict__)
@@ -20,6 +19,6 @@ def jsonfile(request):
             for line in uploaded_file:
                 str_text = str_text + line.decode()
             print(str_text)
-            name = default_storage.save(uploaded_file.name, uploaded_file)
+            name = default_storage.save(uploaded_file.name+".json", uploaded_file)
             print(name)
         return render(request, "server/index.html")
