@@ -17,18 +17,27 @@ import json
 #     print(obj)
 #     f.close()
 
+from datetime import datetime
+import uuid, OpenSSL
+
+# como vamos fazer para o sessionid ser armazendado na execucao e sabermos qual e sempre que se guarda coisas no json
+sessionId = 0
+
 def openProject():
+    # sessionId = uuid.UUID(bytes = OpenSSL.rand.bytes(16))
+    now = datetime.now()
+    action_start = {"sessionId": sessionId, "type" : "start", "datetime" : now.isoformat()}
     try:
         f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "r+")
         obj = json.loads(f.read())
         f.close()
         f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w+")
-        obj["actions"].append({"type" : "start"})
+        obj["actions"].append(action_start)
         json.dump(obj, f, indent=4)
         f.close()
     except:
         f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w")
-        json.dump({"actions":[]}, f, indent=4)
+        json.dump({"actions":[action_start]}, f, indent=4)
         f.close()
 
 
@@ -36,9 +45,23 @@ def openProject():
 def saveProject():
     pass
 
+
+
 def closeProject():
-    f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w+")
-    json.dump({"type" : "close"}, f)
-    f.close()
+    now = datetime.now()
+    action_close = {"sessionId": sessionId, "type" : "close", "datetime" : now.isoformat()}
+    try:
+        f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "r+")
+        obj = json.loads(f.read())
+        f.close()
+        f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w+")
+        obj["actions"].append(action_close)
+        json.dump(obj, f, indent=4)
+        f.close()
+    except:
+        f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w")
+        json.dump({"actions":[action_close]}, f, indent=4)
+        f.close()
 
 openProject()
+closeProject()
