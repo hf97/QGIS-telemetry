@@ -1,5 +1,19 @@
 import json
+from datetime import datetime
+import uuid, OpenSSL
+import json
+import datetime
+import random
+import platform
 
+################################################################
+# Usar isto mas nÃ£o sei meter a dar sem ser no qgis
+# from qgis.core import (
+#   QgsProject,
+#   QgsSettings,
+#   QgsVectorLayer
+# )
+###############################################################
 # def openProject():
 #     f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "r+")
 #     # print(f.read())
@@ -17,9 +31,6 @@ import json
 #     print(obj)
 #     f.close()
 
-from datetime import datetime
-import uuid, OpenSSL
-
 # como vamos fazer para o sessionid ser armazendado na execucao e sabermos qual e sempre que se guarda coisas no json
 sessionId = 0
 
@@ -32,6 +43,21 @@ def openProject():
         obj = json.loads(f.read())
         f.close()
         f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w+")
+        currentPlatform = platform.system()
+        j={}
+        j["sessionId"] = sessionId
+        j["type"] = "open"
+        j["datetime"] = str(x)
+        interface={}
+        interface["OS"] = currentPlatform
+        j["interface"] = interface
+        
+        ###################################
+        # Isto vai buscar a settings do qgis
+        # s = QgsSettings()
+        # s.value("UI/UITheme")
+        # s.value("locale/userLocale")
+        ###################################
         obj["actions"].append(action_start)
         json.dump(obj, f, indent=4)
         f.close()
@@ -65,3 +91,4 @@ def closeProject():
 
 openProject()
 closeProject()
+
