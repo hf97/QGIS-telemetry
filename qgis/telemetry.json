@@ -3,12 +3,14 @@
         {
             "sessionId": 0,
             "type": "start",
-            "datetime": "2021-05-14T21:50:37.900845"
-        },
-        {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-05-14T21:50:37.902844"
+            "datetime": "2021-05-15T16:42:23.426188",
+            "interface": {
+                "OS": "Windows",
+                "language": "en_US",
+                "locale": "pt_PT",
+                "uiTheme": "Night Mapping",
+                "version": "3.16.3-Hannover"
+            }
         }
     ]
 }
