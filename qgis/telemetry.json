@@ -1,9 +1,9 @@
 {
     "actions": [
         {
-            "sessionId": 0,
+            "sessionId": "6cb72916-1201-d048-3a3b-589acd2dca2a",
             "type": "start",
-            "datetime": "2021-05-15T16:42:23.426188",
+            "datetime": "2021-05-15T16:49:35.039874",
             "interface": {
                 "OS": "Windows",
                 "language": "en_US",

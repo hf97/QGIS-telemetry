@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
-import uuid, OpenSSL
+import uuid
+import os
 import json
 import random
 import platform
@@ -22,10 +23,13 @@ import platform
 
 
 # como vamos fazer para o sessionid ser armazendado na execucao e sabermos qual e sempre que se guarda coisas no json
-sessionId = 0
+sessionId = ""
 
-def openProject():
-    # sessionId = uuid.UUID(bytes = OpenSSL.rand.bytes(16))
+# TODO meter sessionID como uuid no json
+
+def startUp():
+    sid = uuid.UUID(bytes = os.urandom(16))
+    sessionId = str(sid)
     now = datetime.now()
     try:
         s = QgsSettings()
@@ -51,10 +55,9 @@ def openProject():
         json.dump({"actions":[action_start]}, f, indent=4)
         f.close()
 
+# execute startup
+startUp()
 
-
-def saveProject():
-    pass
 
 
 
@@ -73,7 +76,3 @@ def closeProject():
         f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w")
         json.dump({"actions":[action_close]}, f, indent=4)
         f.close()
-
-openProject()
-closeProject()
-
