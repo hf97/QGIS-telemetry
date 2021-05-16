@@ -11,6 +11,14 @@
                 "uiTheme": "Night Mapping",
                 "version": "3.16.3-Hannover"
             }
+        },
+        {
+            "sessionId": 0,
+            "type": "open",
+            "datetime": "2021-05-16 13:00:52.721670",
+            "interface": {
+                "OS": "Windows"
+            }
         }
     ]
 }
