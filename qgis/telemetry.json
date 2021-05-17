@@ -19,6 +19,14 @@
             "interface": {
                 "OS": "Windows"
             }
+        },
+        {
+            "sessionId": 0,
+            "type": "open",
+            "datetime": "2021-05-17 10:11:26.480245",
+            "interface": {
+                "OS": "Windows"
+            }
         }
     ]
 }

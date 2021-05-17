@@ -41,8 +41,10 @@ def startUp():
         interface["version"] = Qgis.QGIS_VERSION
 
         #Buscar os plugins
+        appdata=os.getenv('APPDATA')
+        loc = appdata + "/QGIS/QGIS3/profiles/default/python/plugins"
         plugins={}
-        for x in qgis.utils.findPlugins("C:/Users/Filipe/AppData/Roaming/QGIS/QGIS3/profiles/default/python/plugins"):
+        for x in qgis.utils.findPlugins(loc):
             plugin={}
             plugin["version"] = x[1].get('general',"version")
             plugins[x[0]] = plugin
