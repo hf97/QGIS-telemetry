@@ -39,7 +39,16 @@ def startUp():
         interface["locale"] = s.value("locale/globalLocale")
         interface["uiTheme"] = s.value("UI/UITheme")
         interface["version"] = Qgis.QGIS_VERSION
-        action_start = {"sessionId": sessionId, "type" : "start", "datetime" : now.isoformat(), "interface": interface}
+
+        #Buscar os plugins
+        appdata=QgsApplication.qgisSettingsDirPath()
+        loc = appdata + "/python/plugins"
+        plugins={}
+        for x in qgis.utils.findPlugins(loc):
+            plugin={}
+            plugin["version"] = x[1].get('general',"version")
+            plugins[x[0]] = plugin
+        action_start = {"sessionId": sessionId, "type" : "start", "datetime" : now.isoformat(), "interface": interface,"plugins": plugins}
     except:
         action_start = {"sessionId": sessionId, "type" : "start", "datetime" : now.isoformat()}
     try:
