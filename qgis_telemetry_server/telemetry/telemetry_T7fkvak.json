@@ -131,16 +131,6 @@
             "sessionId": 0,
             "type": "close",
             "datetime": "2021-05-19T12:12:41.011917"
-        },
-        {
-            "sessionId": "e165ab05-ec40-ed76-13e1-3b1d25ab6aa6",
-            "type": "start",
-            "datetime": "2021-05-19T12:15:05.467216"
-        },
-        {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-05-19T12:15:05.470216"
         }
     ]
 }

@@ -5,6 +5,7 @@ import os
 import json
 import random
 import platform
+import requests
 
 
 ################################################################
@@ -90,5 +91,14 @@ def closeProject():
     myobj = 'C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json'
     f = open(myobj)
     text = f.read()
-    print(text)
+    # print(text)
     x = requests.post(url, files = dict(telemetry = text))
+
+closeProject()
+
+def postQGIS():
+    req = QNetworkRequest (QUrl("http://127.0.0.1:8000/jsonfile"))
+    manager=QNetworkAccessManager()
+    data= QByteArray()
+    data.append("name=Filipe")
+    manager.post(req,data)

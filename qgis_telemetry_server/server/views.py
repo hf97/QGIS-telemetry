@@ -12,13 +12,16 @@ def jsonfile(request):
     if request.method == "POST":
         for filename in request.FILES:
             uploaded_file = request.FILES[filename]
-            print(uploaded_file.__dict__)
-            print(uploaded_file.name)
-            print(type(uploaded_file))
+            # print(uploaded_file.__dict__)
+            # print(uploaded_file.name)
+            # print(type(uploaded_file))
+            # TODO meter isto sem iterar o ficheiro
             str_text = ''
             for line in uploaded_file:
                 str_text = str_text + line.decode()
-            print(str_text)
-            name = default_storage.save(uploaded_file.name+".json", uploaded_file)
-            print(name)
+            # print(str_text)
+            # print(uploaded_file)
+            name = default_storage.save('./telemetry/'+uploaded_file.name+".json", uploaded_file)
+            # name = default_storage.save(uploaded_file.name+".json", uploaded_file)
+            # print(name)
         return render(request, "server/index.html")
