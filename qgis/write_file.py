@@ -72,6 +72,7 @@ startUp()
 
 def closeProject():
     now = datetime.now()
+    sessionId = 0
     action_close = {"sessionId": sessionId, "type" : "close", "datetime" : now.isoformat()}
     try:
         f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "r+")
@@ -85,3 +86,9 @@ def closeProject():
         f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w")
         json.dump({"actions":[action_close]}, f, indent=4)
         f.close()
+    url = 'http://localhost:8000/jsonfile'
+    myobj = 'C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json'
+    f = open(myobj)
+    text = f.read()
+    print(text)
+    x = requests.post(url, files = dict(telemetry = text))
