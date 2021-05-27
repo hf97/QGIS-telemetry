@@ -93,8 +93,18 @@ DATABASES = {
     #     'PASSWORD': '<password>',
     #     'HOST': 'localhost',
     #     'PORT': '5432',
-
     # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'OPTIONS': {
+            'options': '-c search_path=qgis-telemetry-schema,public'
+        },
+        'NAME': env('NAME'),
+        'USER': env('USER_NAME'),
+        'PASSWORD': env('PASSWORD'),
+        'HOST': env('HOST'),
+        'PORT': env('PORT'),
+    }
 }
 
 

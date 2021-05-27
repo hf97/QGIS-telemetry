@@ -1,9 +1,9 @@
 {
     "actions": [
         {
-            "sessionId": "045b9200-1095-87f7-6969-b7185bb2b411",
+            "sessionId": "3d7a181e-a9e1-6baa-3698-df59c604badb",
             "type": "start",
-            "datetime": "2021-05-19T11:19:08.405279",
+            "datetime": "2021-05-27T19:12:27.580240",
             "interface": {
                 "OS": "Windows",
                 "language": "en_US",
@@ -18,129 +18,38 @@
             }
         },
         {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-05-19T11:19:23.985886"
-        },
-        {
-            "sessionId": "87fb5673-726b-6a92-3cbc-6ef2eca8e1f9",
+            "sessionId": "0b9fbfb9-c3c2-6069-dab2-bd69f40c4868",
             "type": "start",
-            "datetime": "2021-05-19T11:19:33.615383"
+            "datetime": "2021-05-27T19:13:00.684911",
+            "interface": {
+                "OS": "Windows",
+                "language": "en_US",
+                "locale": "pt_PT",
+                "uiTheme": "Night Mapping",
+                "version": "3.16.3-Hannover"
+            },
+            "plugins": {
+                "quick_map_services": {
+                    "version": "0.19.11.1"
+                }
+            }
         },
         {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-05-19T11:19:33.617383"
-        },
-        {
-            "sessionId": "6f5e4d52-36e4-c5f1-86be-90f2ad6db58a",
+            "sessionId": "037e2e64-08a2-639b-000f-fa9a32ff7fe6",
             "type": "start",
-            "datetime": "2021-05-19T11:59:22.305841"
-        },
-        {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-05-19T11:59:22.307846"
-        },
-        {
-            "sessionId": "41f465b4-e2e4-b62e-d5cb-70b17c346042",
-            "type": "start",
-            "datetime": "2021-05-19T11:59:50.576626"
-        },
-        {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-05-19T11:59:50.578627"
-        },
-        {
-            "sessionId": "488aa38c-988e-3a3a-c3dc-4852fb122a88",
-            "type": "start",
-            "datetime": "2021-05-19T12:00:15.674467"
-        },
-        {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-05-19T12:00:15.676465"
-        },
-        {
-            "sessionId": "9be65e64-3082-6f31-b525-1fff3ca61bd4",
-            "type": "start",
-            "datetime": "2021-05-19T12:08:52.164495"
-        },
-        {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-05-19T12:08:52.166494"
-        },
-        {
-            "sessionId": "6d9e6d1f-79bc-89fa-51cd-416af617dc4c",
-            "type": "start",
-            "datetime": "2021-05-19T12:09:23.865112"
-        },
-        {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-05-19T12:09:23.867114"
-        },
-        {
-            "sessionId": "831eecaa-c549-7627-5139-e006ccc33efa",
-            "type": "start",
-            "datetime": "2021-05-19T12:09:52.832329"
-        },
-        {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-05-19T12:09:52.833329"
-        },
-        {
-            "sessionId": "b2b823d8-8dbd-27e6-260d-3f6a11e95ef7",
-            "type": "start",
-            "datetime": "2021-05-19T12:09:59.962033"
-        },
-        {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-05-19T12:09:59.964024"
-        },
-        {
-            "sessionId": "1c08cec7-a354-beea-7bc8-853c260786d3",
-            "type": "start",
-            "datetime": "2021-05-19T12:11:35.654958"
-        },
-        {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-05-19T12:11:35.656961"
-        },
-        {
-            "sessionId": "9e1c5b1e-0c01-f404-570a-663366c92dca",
-            "type": "start",
-            "datetime": "2021-05-19T12:12:31.614174"
-        },
-        {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-05-19T12:12:31.616174"
-        },
-        {
-            "sessionId": "ac47ad07-467d-c2f4-cb6a-a3cbf62917c9",
-            "type": "start",
-            "datetime": "2021-05-19T12:12:41.009917"
-        },
-        {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-05-19T12:12:41.011917"
-        },
-        {
-            "sessionId": "e165ab05-ec40-ed76-13e1-3b1d25ab6aa6",
-            "type": "start",
-            "datetime": "2021-05-19T12:15:05.467216"
-        },
-        {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-05-19T12:15:05.470216"
+            "datetime": "2021-05-27T19:13:13.427306",
+            "interface": {
+                "OS": "Windows",
+                "language": "en_US",
+                "locale": "pt_PT",
+                "uiTheme": "Night Mapping",
+                "version": "3.16.3-Hannover"
+            },
+            "plugins": {
+                "quick_map_services": {
+                    "version": "0.19.11.1"
+                }
+            }
         }
     ]
 }
