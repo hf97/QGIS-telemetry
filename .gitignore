@@ -1,6 +1,9 @@
 # Env
 *.env
 
+# telemetry folder
+qgis_telemetry_server/telemetry
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

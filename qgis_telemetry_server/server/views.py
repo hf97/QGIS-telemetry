@@ -18,9 +18,9 @@ def jsonfile(request):
             # print(uploaded_file.name)
             # print(type(uploaded_file))
             # TODO meter isto sem iterar o ficheiro
-            # str_text = ''
-            # for line in uploaded_file:
-            #     str_text = str_text + line.decode()
+            str_text = ''
+            for line in uploaded_file:
+                str_text = str_text + line.decode()
             # dictjson = json.loads(str_text)
             # actions = dictjson["actions"]
             # print("t1",type(actions))

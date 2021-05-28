@@ -97,7 +97,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'OPTIONS': {
-            'options': '-c search_path=qgis-telemetry-schema,public'
+            'options': '-c search_path=qgis-telemetry-schema'
         },
         'NAME': env('NAME'),
         'USER': env('USER_NAME'),
