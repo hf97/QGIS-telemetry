@@ -69,6 +69,11 @@
             "sessionId": 0,
             "type": "close",
             "datetime": "2021-05-28T15:33:45.668938"
+        },
+        {
+            "sessionId": 0,
+            "type": "close",
+            "datetime": "2021-05-31T12:09:42.378594"
         }
     ],
     "403615b3-a698-356a-dd39-f3a1542b6cc2": [
