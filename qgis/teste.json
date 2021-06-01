@@ -1,5 +1,5 @@
 {
-    "actions": [
+    "3d7a181e-a9e1-6baa-3698-df59c604badb": [
         {
             "sessionId": "3d7a181e-a9e1-6baa-3698-df59c604badb",
             "type": "start",
@@ -16,7 +16,9 @@
                     "version": "0.19.11.1"
                 }
             }
-        },
+        }
+    ],
+    "0b9fbfb9-c3c2-6069-dab2-bd69f40c4868": [
         {
             "sessionId": "0b9fbfb9-c3c2-6069-dab2-bd69f40c4868",
             "type": "start",
@@ -33,7 +35,9 @@
                     "version": "0.19.11.1"
                 }
             }
-        },
+        }
+    ],
+    "037e2e64-08a2-639b-000f-fa9a32ff7fe6": [
         {
             "sessionId": "037e2e64-08a2-639b-000f-fa9a32ff7fe6",
             "type": "start",
@@ -48,9 +52,14 @@
             "plugins": {
                 "quick_map_services": {
                     "version": "0.19.11.1"
+                },
+                "quick": {
+                    "version": "11.1"
                 }
             }
-        },
+        }
+    ],
+    "0": [
         {
             "sessionId": 0,
             "type": "close",
@@ -58,9 +67,16 @@
         },
         {
             "sessionId": 0,
-            "type": "start",
-            "datetime": "2021-05-28T13:08:21.990225"
+            "type": "close",
+            "datetime": "2021-05-28T15:33:45.668938"
         },
+        {
+            "sessionId": 0,
+            "type": "close",
+            "datetime": "2021-05-31T12:09:42.378594"
+        }
+    ],
+    "403615b3-a698-356a-dd39-f3a1542b6cc2": [
         {
             "sessionId": "403615b3-a698-356a-dd39-f3a1542b6cc2",
             "type": "start",
@@ -77,7 +93,9 @@
                     "version": "0.19.11.1"
                 }
             }
-        },
+        }
+    ],
+    "32b3a472-80fa-f233-e194-fb4f770a56eb": [
         {
             "sessionId": "32b3a472-80fa-f233-e194-fb4f770a56eb",
             "type": "start",
@@ -94,7 +112,9 @@
                     "version": "0.19.11.1"
                 }
             }
-        },
+        }
+    ],
+    "00864ba7-3d61-92b5-8792-9e00100fe977": [
         {
             "sessionId": "00864ba7-3d61-92b5-8792-9e00100fe977",
             "type": "start",
@@ -111,7 +131,9 @@
                     "version": "0.19.11.1"
                 }
             }
-        },
+        }
+    ],
+    "bf1daee5-0187-a6e5-eca1-d7a75b0b1d6e": [
         {
             "sessionId": "bf1daee5-0187-a6e5-eca1-d7a75b0b1d6e",
             "type": "start",
@@ -128,7 +150,9 @@
                     "version": "0.19.11.1"
                 }
             }
-        },
+        }
+    ],
+    "5777526d-83ae-0c34-01fa-1ada8c57f764": [
         {
             "sessionId": "5777526d-83ae-0c34-01fa-1ada8c57f764",
             "type": "start",

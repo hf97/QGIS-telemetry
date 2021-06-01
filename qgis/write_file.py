@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+# import pytz
 import uuid
 import os
 import json
@@ -31,6 +32,7 @@ sessionId = ""
 def startUp():
     sid = uuid.UUID(bytes = os.urandom(16))
     sessionId = str(sid)
+    # now = datetime.now(pytz.utc)
     now = datetime.now()
     try:
         s = QgsSettings()
@@ -72,6 +74,7 @@ startUp()
 
 
 def closeProject():
+    # now = datetime.now(pytz.utc)
     now = datetime.now()
     sessionId = 0
     action_close = {"sessionId": sessionId, "type" : "close", "datetime" : now.isoformat()}
