@@ -14,9 +14,9 @@ class Location(models.Model):
 class Telemetry(models.Model):
     telemetry_id = models.AutoField(primary_key=True)
     date_time = models.DateTimeField(default=timezone.now)
-    location_id = models.ForeignKey(Location, on_delete=models.CASCADE)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
     def __str__(self):
-        return f'id:{self.telemetry_id} date_time:{self.date_time} location:{self.location_id.name}'
+        return f'id:{self.telemetry_id} date_time:{self.date_time} location:{self.location.name}'
 
 
 class Plugin(models.Model):
@@ -68,34 +68,45 @@ class Locale(models.Model):
         return f'id:{self.locale_id} name:{self.name}'
 
 
+class Added_layer(models.Model):
+    added_layer_id = models.AutoField(primary_key=True)
+    date_time = models.DateTimeField(default=timezone.now)
+    name = models.CharField(max_length=45)
+    extension = models.CharField(max_length=10)
+    telemetry = models.ForeignKey(Telemetry, on_delete=models.CASCADE)
+    def __str__(self):
+        return f'id:{self.added_layer_id} date_time:{self.date_time} name:{self.name} extension:{self.extension} telemetry:{self.telemetry}'
+
+
 class Interface(models.Model):
     interface_id = models.AutoField(primary_key=True)
-    language_id = models.ForeignKey(Language, on_delete=models.CASCADE)
-    qgis_version_id = models.ForeignKey(Qgis_version, on_delete=models.CASCADE)
-    ui_theme_id = models.ForeignKey(Ui_theme, on_delete=models.CASCADE)
-    locale_id = models.ForeignKey(Locale, on_delete=models.CASCADE)
-    os_id = models.ForeignKey(Os, on_delete=models.CASCADE)
+    language = models.ForeignKey(Language, on_delete=models.CASCADE)
+    qgis_version = models.ForeignKey(Qgis_version, on_delete=models.CASCADE)
+    ui_theme = models.ForeignKey(Ui_theme, on_delete=models.CASCADE)
+    locale = models.ForeignKey(Locale, on_delete=models.CASCADE)
+    os = models.ForeignKey(Os, on_delete=models.CASCADE)
     def __str__(self):
-        return f'id:{self.interface_id} language:{self.language_id.name} qgis_version:{self.qgis_version_id.name} ui_theme:{self.ui_theme_id.name} location:{self.locale_id.name} os:{self.os_id.name}'
+        return f'id:{self.interface_id} language:{self.language.name} qgis_version:{self.qgis_version.name} ui_theme:{self.ui_theme.name} location:{self.locale.name} os:{self.os.name}'
 
 
 class Server(models.Model):
     server_id = models.AutoField(primary_key=True)
     date_time = models.DateTimeField(default=timezone.now)
     protocol = models.CharField(max_length=45)
-    location_id = models.ForeignKey(Location, on_delete=models.CASCADE)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
     def __str__(self):
-        return f'id:{self.server_id} date_time:{self.date_time.name} protocol:{self.protocol} location:{self.location_id.name}'
+        return f'id:{self.server_id} date_time:{self.date_time.name} protocol:{self.protocol} location:{self.location.name}'
 
 
 class Action(models.Model):
     action_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=45)
     date_time = models.DateTimeField(default=timezone.now)
-    telemetry_id = models.ForeignKey(Telemetry, on_delete=models.CASCADE)
-    provider_id = models.ForeignKey(Provider, blank=True, null=True, on_delete=models.CASCADE)
-    interface_id = models.ForeignKey(Interface, blank=True, null=True, on_delete=models.CASCADE)
-    plugin_id = models.ForeignKey(Plugin, blank=True, null=True, on_delete=models.CASCADE)
-    server_id = models.ForeignKey(Server, blank=True, null=True, on_delete=models.CASCADE)
-    # def __str__(self):
+    telemetry = models.ForeignKey(Telemetry, on_delete=models.CASCADE)
+    provider = models.ForeignKey(Provider, blank=True, null=True, on_delete=models.CASCADE)
+    interface = models.ForeignKey(Interface, blank=True, null=True, on_delete=models.CASCADE)
+    plugin = models.ForeignKey(Plugin, blank=True, null=True, on_delete=models.CASCADE)
+    server = models.ForeignKey(Server, blank=True, null=True, on_delete=models.CASCADE)
+    def __str__(self):
+        return f'id:{self.action_id} name:{self.name} date_time:{self.date_time}'
     #     return f'id:{self.action_id} name:{self.name} telemetry:{self.telemetry_id.telemetry_id} provider:{self.provider_id.name} interface:{self.interface_id.interface_id} plugin:{self.plugin_id.name} server:{self.server_id.server_id}'

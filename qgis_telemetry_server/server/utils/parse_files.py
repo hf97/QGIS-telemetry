@@ -1,5 +1,5 @@
 from django.utils import timezone
-from ..models import Telemetry, Action, Location, Plugin, Provider, Os, Language, Qgis_version, Ui_theme, Locale, Interface, Server
+from ..models import Telemetry, Action, Location, Plugin, Provider, Os, Language, Qgis_version, Ui_theme, Locale, Interface, Server, Added_layer
 from datetime import datetime
 
 
@@ -68,11 +68,11 @@ def start_action(action, telemetry):
     # interface -------------
     try:
         interface = Interface()
-        interface.language_id = language
-        interface.qgis_version_id = version
-        interface.ui_theme_id = ui_theme
-        interface.locale_id = locale
-        interface.os_id = os
+        interface.language = language
+        interface.qgis_version = version
+        interface.ui_theme = ui_theme
+        interface.locale = locale
+        interface.os = os
         interface.save()
         print("interface:",interface)
     except:
@@ -93,9 +93,9 @@ def start_action(action, telemetry):
     action_entry = Action()
     action_entry.name = action['type']
     action_entry.date_time = datetime.strptime(action['datetime'], '%Y-%m-%dT%H:%M:%S.%f')
-    action_entry.telemetry_id = telemetry
-    action_entry.interface_id = interface
-    action_entry.plugin_id = plugin
+    action_entry.telemetry = telemetry
+    action_entry.interface = interface
+    action_entry.plugin = plugin
     action_entry.save()
     print("action:", action_entry)
 # -----------------------------------------------
@@ -106,12 +106,24 @@ def close_action(action, telemetry):
     action_entry = Action()
     action_entry.name = action['type']
     action_entry.date_time = datetime.strptime(action['datetime'], '%Y-%m-%dT%H:%M:%S.%f')
-    action_entry.telemetry_id = telemetry
+    action_entry.telemetry = telemetry
     action_entry.save()
     print("action:", action_entry)
 # -----------------------------------------------
 
 
+# parse added layer -----------------------------
+def added_layer_action(action, telemetry):
+    added_layer = Added_layer()
+    added_layer.date_time = datetime.strptime(action['datetime'], '%Y-%m-%dT%H:%M:%S.%f')
+    added_layer.name = action['name']
+    added_layer.extension = action['extension']
+    added_layer.telemetry = telemetry
+    added_layer.save()
+# -----------------------------------------------
+
+
+# main function ---------------------------------
 def parse_files(ip_location, info):
     print(ip_location)
     print(info)
@@ -128,7 +140,7 @@ def parse_files(ip_location, info):
         # telemetry --------------
         telemetry = Telemetry()
         telemetry.date_time = timezone.now()
-        telemetry.location_id = location
+        telemetry.location = location
         telemetry.save()
         print("telemetry:",telemetry)
         # ------------------------
@@ -139,3 +151,5 @@ def parse_files(ip_location, info):
                 start_action(action, telemetry)
             elif action['type'] == "close":
                 close_action(action, telemetry)
+            elif action['type'] == "addedLayer":
+                added_layer_action(action, telemetry)

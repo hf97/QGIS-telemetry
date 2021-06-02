@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Telemetry, Action, Location, Plugin, Provider, Os, Language, Qgis_version, Ui_theme, Locale, Interface, Server
+from .models import Telemetry, Action, Location, Plugin, Provider, Os, Language, Qgis_version, Ui_theme, Locale, Interface, Server, Added_layer
 
 
 # Register your models here.
@@ -15,3 +15,4 @@ admin.site.register(Ui_theme)
 admin.site.register(Locale)
 admin.site.register(Interface)
 admin.site.register(Server)
+admin.site.register(Added_layer)

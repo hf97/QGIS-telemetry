@@ -55,6 +55,18 @@
             "sessionId": 0,
             "type": "close",
             "datetime": "2021-05-31T19:33:28.583234"
+        },
+        {
+            "sessionId": 0,
+            "type": "close",
+            "datetime": "2021-05-31T19:36:44.715149"
+        },
+        {
+            "sessionId": 0,
+            "type": "addedLayer",
+            "datetime": "2021-06-02T09:00:08.521012",
+            "name": "Bing Map",
+            "extension": "wms"
         }
     ]
 }
