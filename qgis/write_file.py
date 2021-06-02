@@ -105,3 +105,29 @@ def postQGIS():
     data= QByteArray()
     data.append("name=Filipe")
     manager.post(req,data)
+
+def onAddedChildren(node, indexFrom, indexTo):
+    layer = node.children()[indexFrom].layer()
+    nome = layer.name()
+    tipo = layer.providerType()
+    now = datetime.now()
+    sessionId = 0
+    addedLayer = {"sessionId": sessionId, "type" : "addedLayer", "datetime" : now.isoformat(),"name": nome,"extension":tipo}
+    try:
+        f = open("E:/UM/Projeto/server/telemetry.json", "r+")
+        obj = json.loads(f.read())
+        f.close()
+        print("ola")
+        f = open("E:/UM/Projeto/server/telemetry.json", "w+")
+        obj["actions"].append(addedLayer)
+        json.dump(obj, f, indent=4)
+        f.close()
+    except:
+        print("except")
+        f = open("E:/UM/Projeto/server/telemetry.json", "w")
+        json.dump({"actions":[addedLayer]}, f, indent=4)
+        f.close()
+    print("'{}': '{}'".format(nome, tipo))
+
+root = QgsProject.instance().layerTreeRoot()
+root.addedChildren.connect(onAddedChildren)
