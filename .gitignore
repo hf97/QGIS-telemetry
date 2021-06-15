@@ -1,3 +1,8 @@
+# Cubejs
+/qgis-telemetry-dashboard/node_modules
+/qgis-telemetry-dashboard/.cubestore
+/qgis-telemetry-dashboard/upstream
+
 # Env
 *.env
 
