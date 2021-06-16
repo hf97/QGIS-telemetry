@@ -7,13 +7,20 @@ cube(`ServerAction`, {
   },
   
   joins: {
-    
+    ServerInterface: {
+      relationship: `hasOne`,
+      sql: `${ServerAction}.interface_id = ${ServerInterface}.interface_id`,
+    }
   },
   
   measures: {
     count: {
       type: `count`,
       drillMembers: [name, dateTime]
+    },
+    actionUICount:{
+      sql: `${count2}`,
+      type:`sum`
     }
   },
   
@@ -32,6 +39,11 @@ cube(`ServerAction`, {
     dateTime: {
       sql: `date_time`,
       type: `time`
+    },
+    count2: {
+      sql: `${ServerInterface.uiCount}`,
+      type: `number`,
+      subQuery: true
     }
   },
   

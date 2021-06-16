@@ -22,6 +22,10 @@ cube(`ServerInterface`, {
     count: {
       type: `count`,
       drillMembers: []
+    },
+    uiCount: {
+      sql:`${count2}`,
+      type: `sum`
     }
   },
   
@@ -30,6 +34,11 @@ cube(`ServerInterface`, {
       sql: `interface_id`,
       type: `number`,
       primaryKey: true
+    },
+    count2: {
+      sql: `${ServerUiTheme.count}`,
+      type: `number`,
+      subQuery: true
     }
   },
   

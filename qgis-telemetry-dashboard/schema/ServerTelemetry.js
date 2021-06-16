@@ -7,14 +7,22 @@ cube(`ServerTelemetry`, {
   },
   
   joins: {
-    
+    ServerAction: {
+      relationship: `hasMany`,
+      sql: `${ServerTelemetry}.telemetry_id = ${ServerAction}.telemetry_id`,
+    }
   },
   
   measures: {
     count: {
       type: `count`,
       drillMembers: [dateTime]
+    },
+    totalCount: {
+      sql:`${count2}`,
+      type:`sum`
     }
+    
   },
   
   dimensions: {
@@ -26,6 +34,11 @@ cube(`ServerTelemetry`, {
     dateTime: {
       sql: `date_time`,
       type: `time`
+    },
+    count2: {
+      sql: `${ServerAction.actionUICount}`,
+      type: `number`,
+      subQuery: true
     }
   },
   
