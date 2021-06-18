@@ -1,5 +1,5 @@
 from django.utils import timezone
-from ..models import Telemetry, Action, Location, Plugin, Provider, Os, Language, Qgis_version, Ui_theme, Locale, Interface, Server, Added_layer
+from ..models import Telemetry, Action, Location, Plugin, Os, Language, Qgis_version, Ui_theme, Locale, Interface, Server, Added_layer
 from datetime import datetime
 
 
@@ -90,14 +90,18 @@ def start_action(action, telemetry):
             plugin.version = action['plugins'][action_plugin]['version']
             plugin.save()
             print("plugin:",plugin)
-    action_entry = Action()
-    action_entry.name = action['type']
-    action_entry.date_time = datetime.strptime(action['datetime'], '%Y-%m-%dT%H:%M:%S.%f')
-    action_entry.telemetry = telemetry
-    action_entry.interface = interface
-    action_entry.plugin = plugin
-    action_entry.save()
-    print("action:", action_entry)
+    # TODO meter o action em try except
+    try:
+        action_entry = Action()
+        action_entry.name = action['type']
+        action_entry.date_time = datetime.strptime(action['datetime'], '%Y-%m-%dT%H:%M:%S.%f')
+        action_entry.telemetry = telemetry
+        action_entry.interface = interface
+        action_entry.plugin = plugin
+        action_entry.save()
+        print("action - start_action :", action_entry)
+    except:
+        print("No action - start_action")
 # -----------------------------------------------
 
 
@@ -114,12 +118,54 @@ def close_action(action, telemetry):
 
 # parse added layer -----------------------------
 def added_layer_action(action, telemetry):
-    added_layer = Added_layer()
-    added_layer.date_time = datetime.strptime(action['datetime'], '%Y-%m-%dT%H:%M:%S.%f')
-    added_layer.name = action['name']
-    added_layer.extension = action['extension']
-    added_layer.telemetry = telemetry
-    added_layer.save()
+    try:
+        try:
+            added_layer = Added_layer.objects.filter(name=action['name']).filter(extension=action['extension'])[0]
+        except:
+            print("2")
+            added_layer = Added_layer()
+            added_layer.name = action['name']
+            added_layer.extension = action['extension']
+            added_layer.save()
+            print("added_layer: ", added_layer)
+    except:
+        print("No added_layer")
+    try:
+        action_added_layer = Action()
+        action_added_layer.name = action['type']
+        action_added_layer.date_time = datetime.strptime(action['datetime'], '%Y-%m-%dT%H:%M:%S.%f')
+        action_added_layer.telemetry = telemetry
+        action_added_layer.added_layer = added_layer
+        action_added_layer.save()
+        print("action - added_layer: ", action_added_layer)
+    except:
+        print("No action - added_layer")
+# -----------------------------------------------
+
+
+# parse added layer -----------------------------
+def server_action(action, telemetry):
+    try:
+        try:
+            server = Server.objects.filter(protocol=action['protocol'])[0]
+            print("server1: ", server)
+        except:
+            server = Server()
+            server.protocol = action['protocol']
+            server.save()
+            print("server: ", server)
+    except:
+        print("No server")
+    try:
+        action_server = Action()
+        action_server.name = action['type']
+        action_server.date_time = datetime.strptime(action['datetime'], '%Y-%m-%dT%H:%M:%S.%f')
+        action_server.telemetry = telemetry
+        action_server.server = server
+        action_server.save()
+        print("action - server: ", action_server)
+    except:
+        print("No action - server")
 # -----------------------------------------------
 
 
@@ -144,12 +190,12 @@ def parse_files(ip_location, info):
         telemetry.save()
         print("telemetry:",telemetry)
         # ------------------------
-        # print("session:",session)
         for action in info[session]:
-            # print("action:",action)
             if action['type'] == "start":
                 start_action(action, telemetry)
             elif action['type'] == "close":
                 close_action(action, telemetry)
             elif action['type'] == "addedLayer":
                 added_layer_action(action, telemetry)
+            elif action['type'] == "server":
+                server_action(action,telemetry)

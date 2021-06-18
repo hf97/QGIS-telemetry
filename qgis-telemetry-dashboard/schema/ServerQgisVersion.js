@@ -1,5 +1,5 @@
 cube(`ServerQgisVersion`, {
-  sql: `SELECT * FROM "qgis-telemetry-schema".server_qgis_version`,
+  sql: `SELECT * FROM public.server_qgis_version`,
   
   preAggregations: {
     // Pre-Aggregations definitions go here
@@ -16,9 +16,13 @@ cube(`ServerQgisVersion`, {
       drillMembers: [name]
     }
   },
+  segments:{
+    notNull:{
+      sql: `${CUBE}.name!='Null'`,
+    }},
   
   dimensions: {
-    Qgis_version_id: {
+    qgis_version_id: {
       sql: `qgis_version_id`,
       type: `number`,
       primaryKey: true

@@ -1,5 +1,5 @@
 cube(`ServerPlugin`, {
-  sql: `SELECT * FROM "qgis-telemetry-schema".server_plugin`,
+  sql: `SELECT * FROM public.server_plugin`,
   
   preAggregations: {
     // Pre-Aggregations definitions go here
@@ -16,6 +16,10 @@ cube(`ServerPlugin`, {
       drillMembers: [name]
     }
   },
+  segments:{
+    notNull:{
+      sql: `${CUBE}.name!='Null'`,
+    }},
   
   dimensions: {
     plugin_id: {
@@ -23,13 +27,14 @@ cube(`ServerPlugin`, {
       type: `number`,
       primaryKey: true
     },
-    version: {
-      sql: `version`,
-      type: `string`
-    },
     
     name: {
       sql: `name`,
+      type: `string`
+    },
+    
+    version: {
+      sql: `version`,
       type: `string`
     }
   },

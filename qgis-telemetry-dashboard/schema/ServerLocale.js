@@ -1,5 +1,5 @@
 cube(`ServerLocale`, {
-  sql: `SELECT * FROM "qgis-telemetry-schema".server_locale`,
+  sql: `SELECT * FROM public.server_locale`,
   
   preAggregations: {
     // Pre-Aggregations definitions go here
@@ -16,6 +16,10 @@ cube(`ServerLocale`, {
       drillMembers: [name]
     }
   },
+  segments:{
+    notNull:{
+      sql: `${CUBE}.name!='Null'`,
+    }},
   
   dimensions: {
     locale_id: {
@@ -23,6 +27,7 @@ cube(`ServerLocale`, {
       type: `number`,
       primaryKey: true
     },
+    
     name: {
       sql: `name`,
       type: `string`

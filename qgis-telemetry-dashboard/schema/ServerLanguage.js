@@ -1,5 +1,5 @@
 cube(`ServerLanguage`, {
-  sql: `SELECT * FROM "qgis-telemetry-schema".server_language`,
+  sql: `SELECT * FROM public.server_language`,
   
   preAggregations: {
     // Pre-Aggregations definitions go here
@@ -16,6 +16,10 @@ cube(`ServerLanguage`, {
       drillMembers: [name]
     }
   },
+  segments:{
+    notNull:{
+      sql: `${CUBE}.name!='Null'`,
+    }},
   
   dimensions: {
     language_id: {

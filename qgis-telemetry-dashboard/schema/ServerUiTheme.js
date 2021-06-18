@@ -1,5 +1,5 @@
 cube(`ServerUiTheme`, {
-  sql: `SELECT * FROM "qgis-telemetry-schema".server_ui_theme`,
+  sql: `SELECT * FROM public.server_ui_theme`,
   
   preAggregations: {
     // Pre-Aggregations definitions go here
@@ -13,7 +13,13 @@ cube(`ServerUiTheme`, {
   measures: {
     count: {
       type: `count`,
-      drillMembers: [name]
+      drillMembers: [name],
+      title:`Ui themes`,
+    }
+  },
+  segments:{
+    notNull:{
+      sql: `${CUBE}.name!='Null'`,
     }
   },
   
@@ -25,8 +31,8 @@ cube(`ServerUiTheme`, {
     },
     name: {
       sql: `name`,
-      type: `string`
-    }
+      type: `string`,
+    },
   },
   
   dataSource: `default`

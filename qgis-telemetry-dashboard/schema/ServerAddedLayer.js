@@ -1,5 +1,5 @@
 cube(`ServerAddedLayer`, {
-  sql: `SELECT * FROM "qgis-telemetry-schema".server_added_layer`,
+  sql: `SELECT * FROM public.server_added_layer`,
   
   preAggregations: {
     // Pre-Aggregations definitions go here
@@ -16,6 +16,11 @@ cube(`ServerAddedLayer`, {
       drillMembers: [name, dateTime]
     }
   },
+  segments:{
+    notNull:{
+      sql: `${CUBE}.name!='Null'`,
+    }
+  },
   
   dimensions: {
     added_layer_id: {
@@ -24,13 +29,13 @@ cube(`ServerAddedLayer`, {
       primaryKey: true
     },
     
-    extension: {
-      sql: `extension`,
+    name: {
+      sql: `name`,
       type: `string`
     },
     
-    name: {
-      sql: `name`,
+    extension: {
+      sql: `extension`,
       type: `string`
     },
     

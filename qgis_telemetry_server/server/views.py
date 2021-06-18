@@ -6,11 +6,10 @@ from django.core.files.storage import default_storage
 # from .models import Telemetry, Action, Location, Plugin, Provider, Os, Language, Qgis_version, Ui_theme, Locale, Interface, Server
 
 # IP
-from django.contrib.gis.geoip2 import GeoIP2
+import geoip2.database
 
 import json
 # import datetime
-
 
 from .utils.parse_files import *
 
@@ -22,14 +21,14 @@ def index(request):
 @csrf_exempt
 def jsonfile(request):
     if request.method == "POST":
-
+        reader = geoip2.database.Reader("./GeoLite2-Country_20210615/GeoLite2-Country.mmdb")
         try:
             ip = request.META.get('HTTP_X_FORWARDED_FOR')
         except:
             ip = request.META.get('REMOTE_ADDR')
         try:
-            geo = GeoIP2()
-            ip_location = geo.country.name
+            response = reader.country(ip)
+            ip_location = response.registered_country.name['en']
         except:
             ip_location = "None"
         print("ip:", ip, "ip_location:", ip_location)
@@ -47,12 +46,6 @@ def jsonfile(request):
                     info[action['sessionId']].append(dict(action))
 
             parse_files(ip_location, info)
-
-            # print(info)
-            # f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/teste.json", "w")
-            # json.dump(info, f, indent=4)
-            # f.close()
-
 
             # default_storage.save('./telemetry/'+uploaded_file.name+".json", uploaded_file)
         return render(request, "server/index.html")

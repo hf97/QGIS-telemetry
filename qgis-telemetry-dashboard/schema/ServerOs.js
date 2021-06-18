@@ -1,5 +1,5 @@
 cube(`ServerOs`, {
-  sql: `SELECT * FROM "qgis-telemetry-schema".server_os`,
+  sql: `SELECT * FROM public.server_os`,
   
   preAggregations: {
     // Pre-Aggregations definitions go here
@@ -16,6 +16,10 @@ cube(`ServerOs`, {
       drillMembers: [name]
     }
   },
+  segments:{
+    notNull:{
+      sql: `${CUBE}.name!='Null'`,
+    }},
   
   dimensions: {
     os_id: {
@@ -23,6 +27,7 @@ cube(`ServerOs`, {
       type: `number`,
       primaryKey: true
     },
+    
     name: {
       sql: `name`,
       type: `string`

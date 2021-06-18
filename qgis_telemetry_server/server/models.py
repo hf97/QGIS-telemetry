@@ -26,11 +26,11 @@ class Plugin(models.Model):
     def __str__(self):
         return f'id:{self.plugin_id} name:{self.name} version:{self.version}'
 
-class Provider(models.Model):
-    provider_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
-    def __str__(self):
-        return f'id:{self.provider_id} name:{self.name}'
+# class Provider(models.Model):
+#     provider_id = models.AutoField(primary_key=True)
+#     name = models.CharField(max_length=100)
+#     def __str__(self):
+#         return f'id:{self.provider_id} name:{self.name}'
 
 
 class Os(models.Model):
@@ -70,12 +70,10 @@ class Locale(models.Model):
 
 class Added_layer(models.Model):
     added_layer_id = models.AutoField(primary_key=True)
-    date_time = models.DateTimeField(default=timezone.now)
     name = models.CharField(max_length=45)
     extension = models.CharField(max_length=10)
-    telemetry = models.ForeignKey(Telemetry, on_delete=models.CASCADE)
     def __str__(self):
-        return f'id:{self.added_layer_id} date_time:{self.date_time} name:{self.name} extension:{self.extension} telemetry:{self.telemetry}'
+        return f'id:{self.added_layer_id} name:{self.name} extension:{self.extension}'
 
 
 class Interface(models.Model):
@@ -91,11 +89,9 @@ class Interface(models.Model):
 
 class Server(models.Model):
     server_id = models.AutoField(primary_key=True)
-    date_time = models.DateTimeField(default=timezone.now)
     protocol = models.CharField(max_length=45)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE)
     def __str__(self):
-        return f'id:{self.server_id} date_time:{self.date_time.name} protocol:{self.protocol} location:{self.location.name}'
+        return f'id:{self.server_id} protocol:{self.protocol}'
 
 
 class Action(models.Model):
@@ -103,10 +99,9 @@ class Action(models.Model):
     name = models.CharField(max_length=45)
     date_time = models.DateTimeField(default=timezone.now)
     telemetry = models.ForeignKey(Telemetry, on_delete=models.CASCADE)
-    provider = models.ForeignKey(Provider, blank=True, null=True, on_delete=models.CASCADE)
     interface = models.ForeignKey(Interface, blank=True, null=True, on_delete=models.CASCADE)
     plugin = models.ForeignKey(Plugin, blank=True, null=True, on_delete=models.CASCADE)
     server = models.ForeignKey(Server, blank=True, null=True, on_delete=models.CASCADE)
+    added_layer = models.ForeignKey(Added_layer, blank=True, null=True, on_delete=models.CASCADE)
     def __str__(self):
         return f'id:{self.action_id} name:{self.name} date_time:{self.date_time}'
-    #     return f'id:{self.action_id} name:{self.name} telemetry:{self.telemetry_id.telemetry_id} provider:{self.provider_id.name} interface:{self.interface_id.interface_id} plugin:{self.plugin_id.name} server:{self.server_id.server_id}'
