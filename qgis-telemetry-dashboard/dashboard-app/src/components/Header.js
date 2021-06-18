@@ -7,6 +7,7 @@ const Header = ({ location }) => (
   <Layout.Header
     style={{
       padding: '0 32px',
+      backgroundColor: '#6a8d25',
     }}
   >
     <div
