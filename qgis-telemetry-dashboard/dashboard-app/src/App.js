@@ -8,8 +8,6 @@ import { CubeProvider } from '@cubejs-client/react';
 import Header from './components/Header';
 import WebSocketTransport from '@cubejs-client/ws-transport';
 const API_URL = 'http://localhost:4000';
-// const CUBEJS_TOKEN =
-//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjM5MjA1NTQsImV4cCI6MTYyNDAwNjk1NH0.21VfilQednX8VvCpPuAwdIkltgByrvTYIARfHLJIUN0';
 const CUBEJS_TOKEN = `${process.env.REACT_APP_CUBEJS_API_KEY}`;
 const cubejsApi = cubejs({
   transport: new WebSocketTransport({
