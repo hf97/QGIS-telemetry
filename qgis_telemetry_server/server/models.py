@@ -26,13 +26,6 @@ class Plugin(models.Model):
     def __str__(self):
         return f'id:{self.plugin_id} name:{self.name} version:{self.version}'
 
-# class Provider(models.Model):
-#     provider_id = models.AutoField(primary_key=True)
-#     name = models.CharField(max_length=100)
-#     def __str__(self):
-#         return f'id:{self.provider_id} name:{self.name}'
-
-
 class Os(models.Model):
     os_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)

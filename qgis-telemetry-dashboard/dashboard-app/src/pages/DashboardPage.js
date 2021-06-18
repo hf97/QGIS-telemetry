@@ -69,12 +69,12 @@ const DashboardItems = [
         dimensions: ['ServerServer.protocol'],
         segments: ['ServerServer.notNull'],
       },
-      chartType: 'line',
+      chartType: 'bar',
     },
   },
   {
     id: 4,
-    name: 'New Chart',
+    name: 'Languages',
     vizState: {
       query: {
         measures: ['ServerTelemetry.totalCountLanguage'],
@@ -91,7 +91,7 @@ const DashboardItems = [
   },
   {
     id: 5,
-    name: 'New Chart',
+    name: 'Versions',
     vizState: {
       query: {
         measures: ['ServerTelemetry.totalCountQgisVersion'],
@@ -106,7 +106,7 @@ const DashboardItems = [
   },
   {
     id: 6,
-    name: 'New Chart',
+    name: 'Locales',
     vizState: {
       query: {
         measures: ['ServerTelemetry.totalCountLocale'],
@@ -123,7 +123,7 @@ const DashboardItems = [
   },
   {
     id: 7,
-    name: 'New Chart',
+    name: 'Operative Systems',
     vizState: {
       query: {
         measures: ['ServerTelemetry.totalCountOs'],
@@ -134,6 +134,40 @@ const DashboardItems = [
         filters: [],
         dimensions: ['ServerOs.name'],
         segments: ['ServerOs.notNull'],
+      },
+      chartType: 'bar',
+    },
+  },
+  {
+    id: 8,
+    name: 'Most Used Actions',
+    vizState: {
+      query: {
+        measures: ['ServerTelemetry.totalCountActions'],
+        timeDimensions: [],
+        order: {
+          'ServerTelemetry.totalCountActions': 'desc',
+        },
+        filters: [],
+        dimensions: ['ServerAction.name'],
+        segments: [],
+      },
+      chartType: 'bar',
+    },
+  },
+  {
+    id: 9,
+    name: 'Telemetry by Locations',
+    vizState: {
+      query: {
+        measures: ['ServerTelemetry.totalLocation'],
+        timeDimensions: [],
+        order: {
+          'ServerTelemetry.totalLocation': 'desc',
+        },
+        filters: [],
+        dimensions: ['ServerLocation.name'],
+        segments: ['ServerLocation.notNull'],
       },
       chartType: 'bar',
     },

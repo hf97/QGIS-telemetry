@@ -18,7 +18,7 @@ cube(`ServerLocation`, {
   },
   segments:{
     notNull:{
-      sql: `${CUBE}.name!='Null'`,
+      sql: `${CUBE}.name!='None'`,
     }},
   
   dimensions: {

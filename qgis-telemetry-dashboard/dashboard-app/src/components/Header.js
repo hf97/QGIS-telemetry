@@ -24,7 +24,7 @@ const Header = ({ location }) => (
           lineHeight: '54px',
         }}
       >
-        My Dashboard
+        QGIS Telemetry Dashboard
       </h2>
     </div>
     <Menu
@@ -35,9 +35,6 @@ const Header = ({ location }) => (
         lineHeight: '64px',
       }}
     >
-      <Menu.Item key="/">
-        <Link to="/">Dashboard</Link>
-      </Menu.Item>
     </Menu>
   </Layout.Header>
 );
