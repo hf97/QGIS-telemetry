@@ -7,7 +7,8 @@ import json
 import random
 import platform
 import requests
-
+from qgis.core import *
+import qgis
 
 ################################################################
 # Usar isto mas nÃ£o sei meter a dar sem ser no qgis
