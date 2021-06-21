@@ -6,5 +6,4 @@ import requests
 url="https://qgis-telemetry.herokuapp.com/jsonfile"
 f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "r+")
 obj = f.read()
-# print(type(obj))
 x = requests.post(url, files = dict(telemetry = obj))
