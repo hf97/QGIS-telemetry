@@ -11,29 +11,23 @@ from qgis.core import *
 import qgis
 
 ################################################################
-# Usar isto mas nÃ£o sei meter a dar sem ser no qgis
 # from qgis.core import (
 #   QgsProject,
 #   QgsSettings,
 #   QgsVectorLayer
 # )
 ###################################
-# Isto vai buscar a settings do qgis
+# Settings do qgis
 # s = QgsSettings()
 # s.value("UI/UITheme")
 # s.value("locale/userLocale")
 ###################################
 
-
-# como vamos fazer para o sessionid ser armazendado na execucao e sabermos qual e sempre que se guarda coisas no json
 sessionId = ""
-
-# TODO meter sessionID como uuid no json
 
 def startUp():
     sid = uuid.UUID(bytes = os.urandom(16))
     sessionId = str(sid)
-    # now = datetime.now(pytz.utc)
     now = datetime.now()
     try:
         s = QgsSettings()
@@ -43,7 +37,6 @@ def startUp():
         interface["locale"] = s.value("locale/globalLocale")
         interface["uiTheme"] = s.value("UI/UITheme")
         interface["version"] = Qgis.QGIS_VERSION
-
         #Buscar os plugins
         appdata=QgsApplication.qgisSettingsDirPath()
         loc = appdata + "/python/plugins"
@@ -75,7 +68,6 @@ startUp()
 
 
 def closeProject():
-    # now = datetime.now(pytz.utc)
     now = datetime.now()
     sessionId = 0
     action_close = {"sessionId": sessionId, "type" : "close", "datetime" : now.isoformat()}
@@ -95,7 +87,6 @@ def closeProject():
     myobj = 'C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json'
     f = open(myobj)
     text = f.read()
-    # print(text)
     x = requests.post(url, files = dict(telemetry = text))
 
 closeProject()
