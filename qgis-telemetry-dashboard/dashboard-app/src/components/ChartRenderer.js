@@ -25,7 +25,7 @@ const TypeToChartComponent = {
     const data = {
       labels: resultSet.categories().map((c) => c.category),
       datasets: resultSet.series().map((s, index) => ({
-        label: s.title,
+        label: "",
         data: s.series.map((r) => r.value),
         backgroundColor: COLORS_SERIES[index],
         fill: false,
