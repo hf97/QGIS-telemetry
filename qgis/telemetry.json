@@ -52,21 +52,21 @@
             }
         },
         {
-            "sessionId": 0,
+            "sessionId": "e1d37543-9678-668f-bc45-5f5575c85e16",
             "type": "close",
             "datetime": "2021-05-31T19:33:28.583234"
         },
         {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-05-31T19:36:44.715149"
-        },
-        {
-            "sessionId": 0,
+            "sessionId": "eb5ac1a2-b3bc-40d3-1c25-18d9946a1865",
             "type": "addedLayer",
             "datetime": "2021-06-02T09:00:08.521012",
             "name": "Bing Map",
             "extension": "wms"
+        },
+        {
+            "sessionId": "eb5ac1a2-b3bc-40d3-1c25-18d9946a1865",
+            "type": "close",
+            "datetime": "2021-05-31T19:36:44.715149"
         },
         {
             "sessionId": "dd87e8ab-4c4e-3899-d66f-1b1dcfff27ac",
