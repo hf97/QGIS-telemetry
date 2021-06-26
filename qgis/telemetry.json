@@ -73,33 +73,6 @@
             "type": "server",
             "datetime": "2021-05-31T19:31:11.714896+01:00",
             "protocol": "wms"
-        },
-        {
-            "sessionId": 0,
-            "type": "start",
-            "datetime": "2021-06-26T10:22:24.119157+01:00"
-        },
-        {
-            "sessionId": "",
-            "type": "start",
-            "datetime": "2021-06-26T10:27:03.388002+01:00",
-            "interface": {
-                "OS": "Windows",
-                "language": "en_US",
-                "locale": "pt_PT",
-                "uiTheme": "Night Mapping",
-                "version": "3.16.3-Hannover"
-            },
-            "plugins": {
-                "quick_map_services": {
-                    "version": "0.19.11.1"
-                }
-            }
-        },
-        {
-            "sessionId": 0,
-            "type": "close",
-            "datetime": "2021-06-26T11:34:32.455406+01:00"
         }
     ]
 }

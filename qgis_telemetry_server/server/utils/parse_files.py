@@ -133,7 +133,7 @@ def added_layer_action(action, telemetry):
     try:
         action_added_layer = Action()
         action_added_layer.name = action['type']
-        action_added_layer.date_time = datetime.strptime(action['datetime'], '%Y-%m-%dT%H:%M:%S.%f')
+        action_added_layer.date_time = datetime.strptime(action['datetime'], '%Y-%m-%dT%H:%M:%S.%f%z')
         action_added_layer.telemetry = telemetry
         action_added_layer.added_layer = added_layer
         action_added_layer.save()
@@ -159,7 +159,7 @@ def server_action(action, telemetry):
     try:
         action_server = Action()
         action_server.name = action['type']
-        action_server.date_time = datetime.strptime(action['datetime'], '%Y-%m-%dT%H:%M:%S.%f')
+        action_server.date_time = datetime.strptime(action['datetime'], '%Y-%m-%dT%H:%M:%S.%f%z')
         action_server.telemetry = telemetry
         action_server.server = server
         action_server.save()
