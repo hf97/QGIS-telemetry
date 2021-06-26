@@ -3,7 +3,7 @@
         {
             "sessionId": "dd87e8ab-4c4e-3899-d66f-1b1dcfff27ac",
             "type": "start",
-            "datetime": "2021-05-31T19:31:11.714896",
+            "datetime": "2021-05-31T19:31:11.714896+01:00",
             "interface": {
                 "OS": "Windows",
                 "language": "en_US",
@@ -20,7 +20,7 @@
         {
             "sessionId": "e1d37543-9678-668f-bc45-5f5575c85e16",
             "type": "start",
-            "datetime": "2021-05-31T19:31:12.556361",
+            "datetime": "2021-05-31T19:31:12.556361+01:00",
             "interface": {
                 "OS": "Windows",
                 "language": "en_US",
@@ -37,7 +37,7 @@
         {
             "sessionId": "eb5ac1a2-b3bc-40d3-1c25-18d9946a1865",
             "type": "start",
-            "datetime": "2021-05-31T19:31:13.127382",
+            "datetime": "2021-05-31T19:31:13.127382+01:00",
             "interface": {
                 "OS": "Windows",
                 "language": "en_US",
@@ -54,25 +54,47 @@
         {
             "sessionId": "e1d37543-9678-668f-bc45-5f5575c85e16",
             "type": "close",
-            "datetime": "2021-05-31T19:33:28.583234"
+            "datetime": "2021-05-31T19:33:28.583234+01:00"
         },
         {
             "sessionId": "eb5ac1a2-b3bc-40d3-1c25-18d9946a1865",
             "type": "addedLayer",
-            "datetime": "2021-06-02T09:00:08.521012",
+            "datetime": "2021-06-02T09:00:08.521012+01:00",
             "name": "Bing Map",
             "extension": "wms"
         },
         {
             "sessionId": "eb5ac1a2-b3bc-40d3-1c25-18d9946a1865",
             "type": "close",
-            "datetime": "2021-05-31T19:36:44.715149"
+            "datetime": "2021-05-31T19:36:44.715149+01:00"
         },
         {
             "sessionId": "dd87e8ab-4c4e-3899-d66f-1b1dcfff27ac",
             "type": "server",
-            "datetime": "2021-05-31T19:31:11.714896",
+            "datetime": "2021-05-31T19:31:11.714896+01:00",
             "protocol": "wms"
+        },
+        {
+            "sessionId": 0,
+            "type": "start",
+            "datetime": "2021-06-26T10:22:24.119157+01:00"
+        },
+        {
+            "sessionId": "",
+            "type": "start",
+            "datetime": "2021-06-26T10:27:03.388002+01:00",
+            "interface": {
+                "OS": "Windows",
+                "language": "en_US",
+                "locale": "pt_PT",
+                "uiTheme": "Night Mapping",
+                "version": "3.16.3-Hannover"
+            },
+            "plugins": {
+                "quick_map_services": {
+                    "version": "0.19.11.1"
+                }
+            }
         }
     ]
 }

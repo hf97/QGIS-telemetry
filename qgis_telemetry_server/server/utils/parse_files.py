@@ -94,7 +94,7 @@ def start_action(action, telemetry):
     try:
         action_entry = Action()
         action_entry.name = action['type']
-        action_entry.date_time = datetime.strptime(action['datetime'], '%Y-%m-%dT%H:%M:%S.%f')
+        action_entry.date_time = datetime.strptime(action['datetime'], '%Y-%m-%dT%H:%M:%S.%f%z')
         action_entry.telemetry = telemetry
         action_entry.interface = interface
         action_entry.plugin = plugin

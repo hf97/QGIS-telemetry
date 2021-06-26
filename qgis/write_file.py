@@ -1,7 +1,7 @@
 import json
-from datetime import datetime
-# import pytz
-import uuid
+from datetime import datetime, timezone
+import pytz
+# import uuid
 import os
 import json
 import random
@@ -9,6 +9,7 @@ import platform
 import requests
 from qgis.core import *
 import qgis
+
 
 ################################################################
 # from qgis.core import (
@@ -45,9 +46,9 @@ def startUp():
             plugin={}
             plugin["version"] = x[1].get('general',"version")
             plugins[x[0]] = plugin
-        action_start = {"sessionId": sessionId, "type" : "start", "datetime" : now.isoformat(), "interface": interface,"plugins": plugins}
+        action_start = {"sessionId": sessionId, "type" : "start", "datetime" : datetime.now(timezone.utc).astimezone().isoformat(), "interface": interface,"plugins": plugins}
     except:
-        action_start = {"sessionId": sessionId, "type" : "start", "datetime" : now.isoformat()}
+        action_start = {"sessionId": sessionId, "type" : "start", "datetime" : datetime.now(timezone.utc).astimezone().isoformat()}
     try:
         f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "r+")
         obj = json.loads(f.read())

@@ -1,19 +1,14 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import default_storage
-# from django.utils import timezone
-
-# from .models import Telemetry, Action, Location, Plugin, Provider, Os, Language, Qgis_version, Ui_theme, Locale, Interface, Server
 
 # IP
 import geoip2.database
 
 import json
-# import datetime
 
 from .utils.parse_files import *
 
-# Create your views here.
 @csrf_exempt
 def index(request):
     return render(request, 'server/index.html')
