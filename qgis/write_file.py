@@ -71,7 +71,7 @@ startUp()
 def closeProject():
     now = datetime.now()
     sessionId = 0
-    action_close = {"sessionId": sessionId, "type" : "close", "datetime" : now.isoformat()}
+    action_close = {"sessionId": sessionId, "type" : "close", "datetime" : datetime.now(timezone.utc).astimezone().isoformat()}
     try:
         f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "r+")
         obj = json.loads(f.read())
@@ -105,7 +105,7 @@ def onAddedChildren(node, indexFrom, indexTo):
     tipo = layer.providerType()
     now = datetime.now()
     sessionId = 0
-    addedLayer = {"sessionId": sessionId, "type" : "addedLayer", "datetime" : now.isoformat(),"name": nome,"extension":tipo}
+    addedLayer = {"sessionId": sessionId, "type" : "addedLayer", "datetime" : datetime.now(timezone.utc).astimezone().isoformat(),"name": nome,"extension":tipo}
     try:
         f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "r+")
         obj = json.loads(f.read())
