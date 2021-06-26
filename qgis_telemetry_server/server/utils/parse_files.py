@@ -109,7 +109,7 @@ def start_action(action, telemetry):
 def close_action(action, telemetry):
     action_entry = Action()
     action_entry.name = action['type']
-    action_entry.date_time = datetime.strptime(action['datetime'], '%Y-%m-%dT%H:%M:%S.%f')
+    action_entry.date_time = datetime.strptime(action['datetime'], '%Y-%m-%dT%H:%M:%S.%f%z')
     action_entry.telemetry = telemetry
     action_entry.save()
     print("action:", action_entry)
