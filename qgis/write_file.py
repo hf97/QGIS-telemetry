@@ -88,7 +88,7 @@ def closeProject():
     myobj = 'C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json'
     f = open(myobj)
     text = f.read()
-    x = requests.post(url, files = dict(telemetry = text))
+    x = requests.post(url, files = dict(telemetry = text), headers = {'User-Agent': 'QGIS-Telemetry'})
 
 closeProject()
 
