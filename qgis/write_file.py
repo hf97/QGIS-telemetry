@@ -29,7 +29,6 @@ sessionId = ""
 def startUp():
     sid = uuid.UUID(bytes = os.urandom(16))
     sessionId = str(sid)
-    now = datetime.now()
     try:
         s = QgsSettings()
         interface = {}
@@ -50,56 +49,61 @@ def startUp():
     except:
         action_start = {"sessionId": sessionId, "type" : "start", "datetime" : datetime.now(timezone.utc).astimezone().isoformat()}
     try:
-        f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "r+")
+        f = open(appdata + "/telemetry.json", "r+")
+        # f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "r+")
         obj = json.loads(f.read())
         f.close()
-        f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w+")      
+        f = open(appdata + "/telemetry.json", "w+")      
+        # f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w+")      
         obj["actions"].append(action_start)
         json.dump(obj, f, indent=4)
         f.close()
     except:
-        f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w")
+        f = open(appdata + "/telemetry.json", "w")
+        # f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w")
         json.dump({"actions":[action_start]}, f, indent=4)
         f.close()
-
-# execute startup
 startUp()
 
 
 
 
 def closeProject():
-    now = datetime.now()
+    appdata = QgsApplication.qgisSettingsDirPath()
     sessionId = 0
     action_close = {"sessionId": sessionId, "type" : "close", "datetime" : datetime.now(timezone.utc).astimezone().isoformat()}
     try:
-        f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "r+")
+        f = open(appdata + "/telemetry.json", "r+")
+        # f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "r+")
         obj = json.loads(f.read())
         f.close()
-        f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w+")
+        f = open(appdata + "/telemetry.json", "w+")
+        # f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w+")
         obj["actions"].append(action_close)
         json.dump(obj, f, indent=4)
         f.close()
     except:
-        f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w")
+        f = open(appdata + "/telemetry.json", "w")
+        # f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w")
         json.dump({"actions":[action_close]}, f, indent=4)
         f.close()
-    url = 'http://localhost:8000/jsonfile'
-    myobj = 'C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json'
+    # url = 'http://localhost:8000/jsonfile'
+    url="https://qgis-telemetry.herokuapp.com/jsonfile"
+    myobj = appdata + "/telemetry.json"
+    # myobj = 'C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json'
     f = open(myobj)
     text = f.read()
     x = requests.post(url, files = dict(telemetry = text), headers = {'User-Agent': 'QGIS-Telemetry'})
-
+    f = open(appdata + "/telemetry.json", "w")
+    f.close()
 closeProject()
 
-def postQGIS():
-    req = QNetworkRequest (QUrl("http://127.0.0.1:8000/jsonfile"))
-    manager=QNetworkAccessManager()
-    data= QByteArray()
-    data.append("name=Filipe")
-    manager.post(req,data)
+
+
+
 
 def onAddedChildren(node, indexFrom, indexTo):
+    appdata=QgsApplication.qgisSettingsDirPath()
     layer = node.children()[indexFrom].layer()
     nome = layer.name()
     tipo = layer.providerType()
@@ -107,20 +111,22 @@ def onAddedChildren(node, indexFrom, indexTo):
     sessionId = 0
     addedLayer = {"sessionId": sessionId, "type" : "addedLayer", "datetime" : datetime.now(timezone.utc).astimezone().isoformat(),"name": nome,"extension":tipo}
     try:
-        f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "r+")
+        f = open(appdata + "/telemetry.json", "r+")
+        # f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "r+")
         obj = json.loads(f.read())
         f.close()
         print("ola")
-        f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w+")
+        f = open(appdata + "/telemetry.json", "w+")
+        # f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w+")
         obj["actions"].append(addedLayer)
         json.dump(obj, f, indent=4)
         f.close()
     except:
         print("except")
-        f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w")
+        f = open(appdata + "/telemetry.json", "w")
+        # f = open("C:/Users/hugof/Desktop/QGIS-telemetry/qgis/telemetry.json", "w")
         json.dump({"actions":[addedLayer]}, f, indent=4)
         f.close()
     print("'{}': '{}'".format(nome, tipo))
-
 root = QgsProject.instance().layerTreeRoot()
 root.addedChildren.connect(onAddedChildren)

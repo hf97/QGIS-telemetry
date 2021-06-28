@@ -73,6 +73,71 @@
             "type": "server",
             "datetime": "2021-05-31T19:31:11.714896+01:00",
             "protocol": "wms"
+        },
+        {
+            "sessionId": 0,
+            "type": "start",
+            "datetime": "2021-06-28T10:55:24.463368"
+        },
+        {
+            "sessionId": 0,
+            "type": "close",
+            "datetime": "2021-06-28T11:04:41.601187"
+        },
+        {
+            "sessionId": 0,
+            "type": "close",
+            "datetime": "2021-06-28T11:04:45.779180"
+        },
+        {
+            "sessionId": 0,
+            "type": "close",
+            "datetime": "2021-06-28T11:04:49.887315"
+        },
+        {
+            "sessionId": 0,
+            "type": "start",
+            "datetime": "2021-06-28T11:05:09.805360"
+        },
+        {
+            "sessionId": 0,
+            "type": "close",
+            "datetime": "2021-06-28T11:07:30.457402"
+        },
+        {
+            "sessionId": 0,
+            "type": "start",
+            "datetime": "2021-06-28T11:11:51.753174"
+        },
+        {
+            "sessionId": 0,
+            "type": "close",
+            "datetime": "2021-06-28T11:12:44.034310"
+        },
+        {
+            "sessionId": 0,
+            "type": "start",
+            "datetime": "2021-06-28T11:13:11.036308"
+        },
+        {
+            "sessionId": 0,
+            "type": "close",
+            "datetime": "2021-06-28T11:13:52.579943"
+        },
+        {
+            "sessionId": 0,
+            "type": "start",
+            "datetime": "2021-06-28T11:14:40.898630"
+        },
+        {
+            "sessionId": 0,
+            "type": "close",
+            "datetime": "2021-06-28T11:18:01.067062"
+        },
+        {
+            "sessionId": 0,
+            "type": "close",
+            "datetime": "2021-06-28T11:18:31.697009"
         }
     ]
 }
