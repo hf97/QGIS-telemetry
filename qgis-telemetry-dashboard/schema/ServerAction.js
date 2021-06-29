@@ -80,7 +80,7 @@ cube(`ServerAction`, {
     actionLayersCount:{
       sql: `${countLayers}`,
       type:`count`,
-      title:`Os`,
+      title:`Layers`,
     },
   },
   

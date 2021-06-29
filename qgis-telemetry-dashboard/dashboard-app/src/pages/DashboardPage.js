@@ -157,6 +157,23 @@ const DashboardItems = [
   },
   {
     id: 9,
+    name: 'Map Layers',
+    vizState: {
+      query: {
+        measures: ['ServerTelemetry.totalCountlayers'],
+        timeDimensions: [],
+        order: {
+          'ServerTelemetry.totalCountlayers': 'desc',
+        },
+        filters: [],
+        dimensions: ['ServerAddedLayer.name'],
+        segments: ['ServerAddedLayer.notNull'],
+      },
+      chartType: 'bar',
+    },
+  },
+  {
+    id: 10,
     name: 'Telemetry by Locations',
     vizState: {
       query: {
